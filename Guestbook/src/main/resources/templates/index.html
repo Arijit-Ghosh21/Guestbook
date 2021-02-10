@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Guestbook App</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container mt-3">
+	<div>
+		<form th:action="@{/logout}" method="post">
+		    <div align="right">
+		    	<input type="submit" value="Sign Out" />
+		    </div>
+			<div sec:authorize="isAuthenticated()" align="center">
+				Welcome <b><span sec:authentication="name">Username</span></b>
+			</div>
+		</form>
+	</div>	
+	<br/><br/>
+	<div class="text-center">
+		<h1>Welcome To The Guestbook Application</h1>
+		<br/><br/>
+		<div sec:authorize="hasAnyAuthority('USER')">
+			<b>Click The Link To Create New GuestBook Entry</b>
+			<a href="new">Click Here!!</a>
+		</div>
+		<div align="center"  sec:authorize="hasAnyAuthority('ADMIN')">
+			<table border="1" cellpadding="10">
+				<thead>
+					<tr>
+		 			   <th>Guest ID</th>
+			           <th>First Name</th>
+			           <th>Last Name</th>
+			           <th>Gender</th>
+			           <th>Mobile</th>
+			           <th>Email</th>
+			           <th>FeedBack</th>
+						<th>Actions</th>				
+						
+					</tr>
+				</thead>
+				<tbody>
+					 <tr th:each="guest : ${listGuests}">
+			            	<td th:text="${guest.id}">Guest ID</td>
+			                <td th:text="${guest.firstname}">First Name</td>
+			                <td th:text="${guest.lastname}">Last Name</td>
+			                <td th:text="${guest.gender}">Gender</td>
+			                <td th:text="${guest.mobile}">Mobile</td>
+			                <td th:text="${guest.email}">Email</td>
+			                <td th:text="${guest.feedback}">FeedBack</td>
+						
+						<td>
+							<a th:href="@{'/edit/' + ${guest.id}}">Edit</a>			
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<a th:href="@{'/delete/' + ${guest.id}}">Delete</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+</html>
