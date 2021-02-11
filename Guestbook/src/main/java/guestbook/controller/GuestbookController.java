@@ -59,4 +59,12 @@ public class GuestbookController {
 		return "redirect:/";		
 	}
 	
+	@RequestMapping("/updateStatus/{id}")
+	public String updateStatus(@PathVariable("id") Long id){
+	    service.updateStatus(id);
+	    
+	    return "redirect:/";
+
+	}
+	
 }

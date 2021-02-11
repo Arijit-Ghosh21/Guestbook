@@ -38,6 +38,8 @@
 			           <th>Gender</th>
 			           <th>Mobile</th>
 			           <th>Email</th>
+			           <th>Date</th>
+			           <th>Status</th>
 			           <th>FeedBack</th>
 						<th>Actions</th>				
 						
@@ -51,11 +53,15 @@
 			                <td th:text="${guest.gender}">Gender</td>
 			                <td th:text="${guest.mobile}">Mobile</td>
 			                <td th:text="${guest.email}">Email</td>
+			                <td th:text="${guest.date}">Date</td>
+			                <td th:text="${guest.status}">Status</td>
 			                <td th:text="${guest.feedback}">FeedBack</td>
 						
 						<td>
-							<a th:href="@{'/edit/' + ${guest.id}}">Edit</a>			
-							&nbsp;&nbsp;&nbsp;&nbsp;
+							<a th:href="@{'/updateStatus/' + ${guest.id}}">Approve</a>		
+							&nbsp;
+							<a th:href="@{'/edit/' + ${guest.id}}">Edit</a>	
+							&nbsp;
 							<a th:href="@{'/delete/' + ${guest.id}}">Delete</a>
 						</td>
 					</tr>

@@ -14,11 +14,13 @@ public class Guest {
 	private String mobile;
 	private String email;
 	private String feedback;
+	private String date;
+	private String status;
 
 	public Guest() {
 	}
 
-	protected Guest(Long id, String firstname, String lastname, String gender, String mobile,String email, String feedback) {
+	protected Guest(Long id, String firstname, String lastname, String gender, String mobile,String email, String feedback, String date, String status) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
@@ -27,6 +29,8 @@ public class Guest {
 		this.mobile = mobile;
 		this.email = email;
 		this.feedback = feedback;
+		this.date = date;
+		this.status = status;
 	}
 
 	@Id
@@ -86,4 +90,22 @@ public class Guest {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+	
 }

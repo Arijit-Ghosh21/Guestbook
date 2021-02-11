@@ -31,4 +31,8 @@ public class GuestService {
 	public void delete(long id) {
 		repo.deleteById(id);
 	}
+	
+	   public void updateStatus( Long id){
+		   repo.setUpdateStatus("Approved",id);
+		   }
 }
